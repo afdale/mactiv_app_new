@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:mactiv_app_new/common/platform/platformScaffold.dart';
-import 'dart:io';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,21 +23,25 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      appBar: AppBar(title: Text("Home Screen", style: TextStyle(color: Colors.black),),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        elevation:
-        Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 6.0,
-      ),
-
-      backgroundColor: Colors.white,
       body: Container(
-        padding: EdgeInsets.all(32.0),
+        padding: EdgeInsets.all(15.0),
         child: Center(
           child: Column(
             children: <Widget>[
-              Text('This is the Home screen'),
-
+              Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                  child: GestureDetector(
+                    child: Container(
+                        height: 1000,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:AssetImage("assets/homepage.png"),
+                              fit:BoxFit.cover
+                          ),
+                        )
+                    ),
+                  )
+              ),
             ],
           ),
         ),

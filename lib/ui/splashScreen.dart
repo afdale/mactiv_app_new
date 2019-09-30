@@ -1,10 +1,6 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mactiv_app_new/common/platform/platformScaffold.dart';
-
-
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -32,28 +28,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var drawer = Drawer();
-
-    return PlatformScaffold(drawer: drawer,
-        body: Container(
-            decoration: BoxDecoration(color: Colors.black),
-            child: Column(
-              children: <Widget>[
-                Expanded(child:
-                Container(decoration: BoxDecoration(color: Colors.black),
-                  alignment: FractionalOffset(0.5, 0.3),
-                  child:
-                  Text("TestApp", style: TextStyle(fontSize: 40.0, color: Colors.white),),
-                ),
-                ),
-                Container(margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 30.0),
-                  child:
-                  Text("© Copyright Statement 2018", style: TextStyle(fontSize: 16.0, color: Colors.white,),
-                  ),
-                ),
-              ],
-            )
-        )
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/splashscreen.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: null /* add child content here */,
+      ),
     );
   }
+
 }

@@ -1,14 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
 import 'package:mactiv_app_new/common/apifunctions/requestLoginAPI.dart';
 import 'package:mactiv_app_new/common/functions/showDialogSingleButton.dart';
 import 'package:mactiv_app_new/common/platform/platformScaffold.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
-
-import 'package:http/http.dart' as http;
 
 const URL = "http://www.google.com";
 
@@ -24,7 +21,6 @@ class LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  String _welcomeString = "";
 
   Future launchURL(String url) async {
     if(await canLaunch(url)) {
@@ -52,108 +48,166 @@ class LoginScreenState extends State<LoginScreen> {
     return WillPopScope(
       onWillPop: () {
         if(Navigator.canPop(context)) {
-          Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen', (Route<dynamic> route) => false);
+          Navigator.of(context).pushNamedAndRemoveUntil('/SplashScreen', (Route<dynamic> route) => false);
         } else {
-          Navigator.of(context).pushReplacementNamed('/HomeScreen');
+          Navigator.of(context).pushReplacementNamed('/SplashScreen');
         }
         return;
       },
       child:
-
-
       PlatformScaffold(
-        appBar:  AppBar(
-          title: Text("LOGIN",
-            style: TextStyle(fontSize: 30.0, color: Colors.black,),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Colors.black),
-        ),
 
         backgroundColor: Colors.white,
-
         body: Container(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
+            padding: EdgeInsets.fromLTRB(25.0, 50.0, 25.0, 0.0),
             child: ListView(
               children: <Widget>[
-                Container(alignment: Alignment.topCenter,
-                    child: Padding(padding: EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 15.0),
-                      child: Text("TestApp", style: TextStyle(fontSize: 40.0, color: Colors.black),),
+                Padding(
+                    padding: EdgeInsets.fromLTRB(0.0, 25.0, 120.0, 25.0),
+                    child: GestureDetector(
+                        child: Container(
+                            height: 85,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:AssetImage("assets/icon_tv_login.png"),
+                                  fit:BoxFit.cover
+                              ),
+                            )
+                        ),
                     )
                 ),
 
-
-
-
-                Text("Email", style: TextStyle(fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold, ),
-                ),
+               /* Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0),
+                  child: Text("Email", style: TextStyle(fontFamily:'Proxima_nova',
+                    fontSize: 18.0, color: Colors.green, fontWeight: FontWeight.bold, ),
+                  ),
+                ),*/
 
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(0.0, 1.0, 0.0, 0.0),
                   child: TextField(
                     controller: _userNameController,
                     decoration: InputDecoration(
-                      hintText: "Use your web  User name",
+                      hintText: "Email",
                     ),
-                    style: TextStyle(fontSize: 18.0, color: Colors.grey, fontWeight: FontWeight.bold, ),
+                    style: TextStyle(fontFamily:'Proxima_nova', fontSize: 18.0, color: Colors.grey, fontWeight: FontWeight.bold, ),
                   ),
                 ),
 
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 35.0, 0.0, 0.0),
-                  child: Text("Password", style: TextStyle(fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold, ),
-                  ),
-                ),
 
                 Padding(
                   padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
                   child: TextField(
                     controller: _passwordController,
                     decoration: InputDecoration(
-                      hintText: 'Your password, keep it secret, keep it safe.',
+                      hintText: 'Password',
                     ),
                     obscureText: true,
-                    style: TextStyle(fontSize: 18.0, color: Colors.grey, fontWeight: FontWeight.bold, ),
+                    style: TextStyle(fontFamily:'Proxima_nova', fontSize: 18.0, color: Colors.grey, fontWeight: FontWeight.bold, ),
                   ),
                 ),
 
+          Padding(
+            padding: EdgeInsets.fromLTRB(250.0, 5.0, 0.0, 0.0),
+                child: Text("Lupa Password?", style: TextStyle(fontFamily:'Proxima_nova',
+                  fontSize: 18.0, color: Colors.green, fontWeight: FontWeight.bold, ),
+                ),
+          ),
+
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
-                  child: Container(height: 65.0,
-                    child: RaisedButton(
-                        onPressed: () {
-                          SystemChannels.textInput.invokeMethod('TextInput.hide');
-                          requestLoginAPI(context, _userNameController.text, _passwordController.text);
-                        },
-                        child: Text("LOGIN",
-                            style: TextStyle(color: Colors.white,
-                                fontSize: 22.0)
-                        ),
-                      color: Colors.blue,
-                    ),
-                  ),
+                  padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+                  child: GestureDetector(
+                      child: Container(
+                          height: 55,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:AssetImage("assets/btn_login.png"),
+                                  fit:BoxFit.cover
+                              ),
+                          )
+                      ),onTap:(){
+                    SystemChannels.textInput.invokeMethod('TextInput.hide');
+                    requestLoginAPI(context, _userNameController.text, _passwordController.text);
+                  }
+                  )
                 ),
 
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
-                  child: Container(height: 65.0,
-                    child: RaisedButton(
-                      onPressed: () {
-                        SystemChannels.textInput.invokeMethod('TextInput.hide');
-                        Navigator.of(context).pushReplacementNamed('/HomeScreen');
-                      },
-                      child: Text("SIGNUP",
-                          style: TextStyle(color: Colors.white,
-                              fontSize: 22.0)
-                      ),
-                      color: Colors.blue,
-                    ),
+                  padding: EdgeInsets.fromLTRB(120.0, 10.0, 0.0, 0.0),
+                  child: Text("Login menggunakan", style: TextStyle(fontFamily:'Proxima_nova',fontSize: 18.0,
+                    color: Colors.black, fontWeight: FontWeight.w100, ),
+                  ),
+                ),
+
+          Padding(
+            padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+            child:
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children:<Widget>[
+                GestureDetector(
+                    child: Container(
+                        width: 175,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/btn_googlelogin.png"),
+                              fit:BoxFit.cover
+                          ),
+                        )
+                    ),onTap:(){
+                  print("google");
+                }
+                ),
+
+
+                GestureDetector(
+                    child: Container(
+                        width: 175,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/btn_fblogin.png"),
+                              fit:BoxFit.cover
+                          ),
+                        )
+                    ),onTap:(){
+                  print("facebook");
+                }
+                )
+              ],
+            ),
+          ),
+
+
+          Padding(
+            padding: EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+            child:
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:<Widget>[
+                Text("Belum punya akun?", style:
+                TextStyle(fontFamily:'Proxima_nova',fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w100, ),
+                ),
+
+                new InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed('/SignUpScreen');
+                  },
+                  child:new Text("Daftar", style:
+                  TextStyle(fontFamily:'Proxima_nova',fontSize: 18.0, color: Colors.green, fontWeight: FontWeight.bold, ),
                   ),
                 ),
               ],
             ),
+
+          ),
+
+              ],
+            ),
+
           ),
         ),
       ),
