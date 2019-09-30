@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mactiv_app_new/ui/homeScreen.dart';
-import 'package:mactiv_app_new/ui/loginScreen.dart';
-import 'package:mactiv_app_new/ui/signupScreen.dart';
-import 'package:mactiv_app_new/ui/splashScreen.dart';
+import 'package:Mactiv/ui/homeScreen.dart';
+import 'package:Mactiv/ui/loginScreen.dart';
+import 'package:Mactiv/ui/signupScreen.dart';
+import 'package:Mactiv/ui/splashScreen.dart';
 
 void main() => runApp(new MyApp());
 

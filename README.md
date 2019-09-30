@@ -1,4 +1,4 @@
-# mactiv_app_new
+# Mactiv
 
 Mactiv Flutter App
 

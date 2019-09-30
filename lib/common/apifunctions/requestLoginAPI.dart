@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:mactiv_app_new/common/functions/saveCurrentLogin.dart';
-import 'package:mactiv_app_new/common/functions/showDialogSingleButton.dart';
+import 'package:Mactiv/common/functions/saveCurrentLogin.dart';
+import 'package:Mactiv/common/functions/showDialogSingleButton.dart';
 import 'dart:convert';
-import 'package:mactiv_app_new/model/json/loginModel.dart';
+import 'package:Mactiv/model/json/loginModel.dart';
 
 Future<LoginModel> requestLoginAPI(BuildContext context, String email, String password) async {
   final url = "https://devmactiv.mybluemix.net/api/user/login";

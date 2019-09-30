@@ -1,4 +1,4 @@
-name: mactiv_app_new
+name: Mactiv
 description: A new Flutter application.
 
 # The following defines the version and build number for your application.
@@ -17,16 +17,26 @@ dependencies:
     sdk: flutter
 
 
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+
   cupertino_icons: ^0.1.2
   shared_preferences: ^0.4.2
   http: ^0.11.3+17
   url_launcher: ^3.0.3
 
+
 dev_dependencies:
+  flutter_launcher_icons: "^0.7.3"
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"
+
 flutter:
   fonts:
     - family: Proxima_nova

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mactiv_app_new/common/platform/platformScaffold.dart';
+import 'package:Mactiv/common/platform/platformScaffold.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {

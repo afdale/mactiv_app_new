@@ -1,4 +1,4 @@
-package com.mactiv.mactiv_app_new
+package com.mactiv.Mactiv
 
 import android.os.Bundle
 

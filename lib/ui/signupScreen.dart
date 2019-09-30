@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mactiv_app_new/common/platform/platformScaffold.dart';
+import 'package:Mactiv/common/platform/platformScaffold.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mactiv_app_new/common/apifunctions/requestRegisterAPI.dart';
+import 'package:Mactiv/common/apifunctions/requestRegisterAPI.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override

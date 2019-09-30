@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:mactiv_app_new/common/functions/getToken.dart';
-import 'package:mactiv_app_new/common/functions/saveLogout.dart';
-import 'package:mactiv_app_new/model/json/loginModel.dart';
+import 'package:Mactiv/common/functions/getToken.dart';
+import 'package:Mactiv/common/functions/saveLogout.dart';
+import 'package:Mactiv/model/json/loginModel.dart';
 
 Future<LoginModel> requestLogoutAPI(BuildContext context) async {
   final url = "https://devmactiv.mybluemix.net/api/user/logout";
