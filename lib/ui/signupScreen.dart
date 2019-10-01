@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:Mactiv/common/platform/platformScaffold.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Mactiv/common/apifunctions/requestRegisterAPI.dart';
+import 'package:progress_dialog/progress_dialog.dart';
+
+
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -10,6 +13,8 @@ class SignUpScreen extends StatefulWidget {
     return new SignUpScreenState();
   }
 }
+
+ProgressDialog pr;
 
   class SignUpScreenState extends State<SignUpScreen> {
 
@@ -29,6 +34,24 @@ class SignUpScreen extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true, showLogs: true);
+
+    pr.style(
+        message: 'Mendaftarkan Akun Anda',
+        borderRadius: 10.0,
+        backgroundColor: Colors.white,
+        progressWidget: CircularProgressIndicator(),
+        elevation: 10.0,
+        insetAnimCurve: Curves.easeInOut,
+        progress: 0.0,
+        maxProgress: 100.0,
+        progressTextStyle: TextStyle(
+            color: Colors.green, fontFamily:'Proxima_nova', fontSize: 13.0, fontWeight: FontWeight.w400),
+        messageTextStyle: TextStyle(
+            color: Colors.green, fontFamily:'Proxima_nova', fontSize: 19.0, fontWeight: FontWeight.w600)
+    );
+
     return WillPopScope(
       onWillPop: () {
         if(Navigator.canPop(context)) {
@@ -38,6 +61,7 @@ class SignUpScreen extends StatefulWidget {
         }
         return;
       },
+
       child:
 
 
@@ -120,6 +144,10 @@ class SignUpScreen extends StatefulWidget {
                               ),
                             )
                         ),onTap:(){
+                      pr.show();
+                      pr.hide().then((isHidden) {
+                        print(isHidden);
+                      });
                       SystemChannels.textInput.invokeMethod('TextInput.hide');
                       requestRegisterAPI(context, _fullnameController.text,_emailController.text, _passwordController.text);
                     }

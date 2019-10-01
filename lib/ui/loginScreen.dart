@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:Mactiv/common/apifunctions/requestLoginAPI.dart';
 import 'package:Mactiv/common/functions/showDialogSingleButton.dart';
 import 'package:Mactiv/common/platform/platformScaffold.dart';
@@ -17,6 +18,8 @@ class LoginScreen extends StatefulWidget {
 
 }
 
+ProgressDialog pr;
+
 class LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _userNameController = TextEditingController();
@@ -30,6 +33,7 @@ class LoginScreenState extends State<LoginScreen> {
           "Currently unable to reach the website $URL. Please try again at a later time.", "OK");
     }
   }
+
 
   @override
   void initState() {
@@ -45,7 +49,24 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var drawer = Drawer();
+
+    pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true, showLogs: true);
+
+    pr.style(
+        message: 'Login',
+        borderRadius: 10.0,
+        backgroundColor: Colors.white,
+        progressWidget: CircularProgressIndicator(),
+        elevation: 10.0,
+        insetAnimCurve: Curves.easeInOut,
+        progress: 0.0,
+        maxProgress: 100.0,
+        progressTextStyle: TextStyle(
+            color: Colors.green, fontFamily:'Proxima_nova', fontSize: 13.0, fontWeight: FontWeight.w400),
+        messageTextStyle: TextStyle(
+            color: Colors.green, fontFamily:'Proxima_nova', fontSize: 19.0, fontWeight: FontWeight.w600)
+    );
+
     return WillPopScope(
       onWillPop: () {
         if(Navigator.canPop(context)) {
@@ -129,6 +150,10 @@ class LoginScreenState extends State<LoginScreen> {
                               ),
                           )
                       ),onTap:(){
+                    pr.show();
+                    pr.hide().then((isHidden) {
+                      print(isHidden);
+                    });
                     SystemChannels.textInput.invokeMethod('TextInput.hide');
                     requestLoginAPI(context, _userNameController.text, _passwordController.text);
                   }
