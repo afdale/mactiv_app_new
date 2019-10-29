@@ -31,13 +31,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/splashscreen.png"),
-            fit: BoxFit.cover,
-          ),
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            stops: [0.5, 1],
+            colors: [Colors.green, Colors.lightGreenAccent])),
         ),
-        child: null /* add child content here */,
-      ),
     );
   }
 
