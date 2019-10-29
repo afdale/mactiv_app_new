@@ -8,7 +8,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final int splashDuration = 2;
+  final int splashDuration = 1;
 
   startTime() async {
     return Timer(
@@ -28,16 +28,47 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            stops: [0.5, 1],
-            colors: [Colors.green, Colors.lightGreenAccent])),
-        ),
-    );
-  }
 
+    child:
+    return Scaffold(
+      body: Stack(
+        fit: StackFit.expand,
+          children: <Widget>[
+            Container(
+                      decoration: BoxDecoration(
+                        color: new Color(0xFF00CABB),
+                          gradient: LinearGradient(
+                            colors: [new Color(0xFF00CABB), new Color (0xFF00E28C)],
+                            begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                        )
+                      )
+                  ),
+
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                    padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                    child: GestureDetector(
+                      child: Container(
+                          height: 120,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image:AssetImage("assets/splashscreen.png"),
+                                fit:BoxFit.fill
+                            ),
+                          )
+                      ),
+                    )
+                ),
+              ],
+            )
+                ]
+      )
+    );
+
+    
+  }
 }

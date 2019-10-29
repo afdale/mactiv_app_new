@@ -15,13 +15,13 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: "Splash and Token Authentication",
       routes: <String,WidgetBuilder>{
-        "/HomeScreen": (BuildContext context) => HomeScreen(),
+        //"/HomeScreen": (BuildContext context) => HomeScreen(),
         "/LoginScreen": (BuildContext context) => LoginScreen(),
         "/SignUpScreen": (BuildContext context) => SignUpScreen(),
         "/SplashScreen": (BuildContext context) => SplashScreen(),
       },
       home:
-      LoginScreen(),
+      SplashScreen(),
 
 
     );

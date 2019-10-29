@@ -69,8 +69,6 @@ class LoginScreenState extends State<LoginScreen> {
             color: Colors.green, fontFamily:'Proxima_nova', fontSize: 19.0, fontWeight: FontWeight.w600)
     );
 
-
-
     return WillPopScope(
       onWillPop: () {
         if(Navigator.canPop(context)) {
@@ -80,6 +78,7 @@ class LoginScreenState extends State<LoginScreen> {
         }
         return;
       },
+
       child:
       PlatformScaffold(
 
