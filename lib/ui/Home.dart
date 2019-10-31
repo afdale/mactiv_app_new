@@ -33,20 +33,6 @@ const URL = "http://www.google.com";
               padding: EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 0.0),
               child: ListView(
                 children: <Widget>[
-                  /*Padding(
-                      padding: EdgeInsets.fromLTRB(0.0, 0.0, 320.0, 10.0),
-                      child: GestureDetector(
-                        child: Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image:AssetImage("assets/icon_mactiv.png"),
-                                  fit:BoxFit.fill
-                              ),
-                            )
-                        ),
-                      )
-                  ),*/
 
                   Padding(
                     padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
@@ -73,7 +59,7 @@ const URL = "http://www.google.com";
                             Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children:
-                                [
+                                <Widget> [
                                   new Text("Ahad, 5 May 2019", style:
                                   TextStyle(fontFamily:'Proxima_nova',fontSize: 22.0, color: Colors.black, fontWeight: FontWeight.w200, ),
                                   ),
@@ -104,14 +90,42 @@ const URL = "http://www.google.com";
                               blurRadius: 3.5,
                             ),
                           ]),
-                      child: Material(
-                        color: Colors.transparent,
-                      ),
+
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(0.0, 20.0, 180.0, 0.0),
+                            child:
+                            Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children:
+                                [
+                                  new Text("NEXT PRAYER:", style:
+                                  TextStyle(fontFamily:'Proxima_nova',fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.w500, ),
+                                  ),
+                                  new Text("Bogor Timur", style:
+                                  TextStyle(fontFamily:'Proxima_nova',fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.bold, ),
+                                  ),
+                                ]
+                            ),
+
+                        ),
                     ),
                   ),
-
-
-
+                  Padding(
+                      padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                      child:
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children:
+                          <Widget>[
+                            new Text("FAJR:", style:
+                            TextStyle(fontFamily:'Proxima_nova',fontSize: 30.0, color: Colors.black, fontWeight: FontWeight.w500, ),
+                            ),
+                            new Text("Bogor Timur", style:
+                            TextStyle(fontFamily:'Proxima_nova',fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold, ),
+                            ),
+                          ]
+                      )
+                  ),
                 ],
               ),
 
